@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Missed Revenue Calculator - Botcipher</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+					"Helvetica Neue", Arial, sans-serif;
+				background-color: #ffffff;
+				color: #000000;
+				line-height: 1.6;
+			}
+
+			/* Header */
+			header {
+				padding: 24px 20px;
+				border-bottom: 1px solid #f0f0f0;
+				position: sticky;
+				top: 0;
+				background-color: #ffffff;
+				z-index: 100;
+			}
+
+			.header-container {
+				max-width: 600px;
+				margin: 0 auto;
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.logo {
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.logo img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+
+			.logo-text {
+				font-size: 20px;
+				font-weight: 600;
+				letter-spacing: -0.5px;
+			}
+
+			/* Main Content */
+			main {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 40px 20px;
+			}
+
+			/* Header Section */
+			.header-section {
+				text-align: center;
+				margin-bottom: 48px;
+			}
+
+			h1 {
+				font-size: 32px;
+				font-weight: 700;
+				line-height: 1.2;
+				margin-bottom: 12px;
+				letter-spacing: -0.5px;
+			}
+
+			.subtitle {
+				font-size: 16px;
+				color: #999999;
+				font-weight: 400;
+			}
+
+			/* Form Section */
+			.form-section {
+				background-color: #f5f5f5;
+				padding: 40px;
+				border-radius: 10px;
+				margin-bottom: 32px;
+			}
+
+			.form-group {
+				margin-bottom: 32px;
+			}
+
+			.form-group:last-child {
+				margin-bottom: 0;
+			}
+
+			label {
+				display: block;
+				font-size: 14px;
+				font-weight: 600;
+				margin-bottom: 12px;
+				color: #000000;
+			}
+
+			/* Select Inputs */
+			select {
+				width: 100%;
+				padding: 14px 16px;
+				border: 2px solid #e0e0e0;
+				border-radius: 8px;
+				font-size: 14px;
+				font-family: inherit;
+				color: #000000;
+				background-color: #ffffff;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				appearance: none;
+				padding-right: 40px;
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23000' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-position: right 12px center;
+			}
+
+			select:focus {
+				outline: none;
+				border-color: #000000;
+				box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+			}
+
+			select:hover {
+				border-color: #000000;
+			}
+
+			/* Number Input */
+			input[type="number"] {
+				width: 100%;
+				padding: 14px 16px;
+				border: 2px solid #e0e0e0;
+				border-radius: 8px;
+				font-size: 16px;
+				font-family: inherit;
+				color: #000000;
+				transition: all 0.2s ease;
+			}
+
+			input[type="number"]:focus {
+				outline: none;
+				border-color: #000000;
+				box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+			}
+
+			input[type="number"]:hover {
+				border-color: #000000;
+			}
+
+			/* Slider Container */
+			.slider-container {
+				display: flex;
+				align-items: center;
+				gap: 16px;
+			}
+
+			.slider-input {
+				flex: 1;
+			}
+
+			input[type="range"] {
+				width: 100%;
+				height: 6px;
+				border-radius: 3px;
+				background: #e0e0e0;
+				outline: none;
+				-webkit-appearance: none;
+				appearance: none;
+				cursor: pointer;
+			}
+
+			input[type="range"]::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 22px;
+				height: 22px;
+				border-radius: 50%;
+				background: #000000;
+				cursor: pointer;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+				transition: all 0.2s ease;
+			}
+
+			input[type="range"]::-webkit-slider-thumb:hover {
+				transform: scale(1.1);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			}
+
+			input[type="range"]::-moz-range-thumb {
+				width: 22px;
+				height: 22px;
+				border-radius: 50%;
+				background: #000000;
+				cursor: pointer;
+				border: none;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+				transition: all 0.2s ease;
+			}
+
+			input[type="range"]::-moz-range-thumb:hover {
+				transform: scale(1.1);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			}
+
+			.slider-value {
+				min-width: 60px;
+				padding: 8px 12px;
+				background-color: #000000;
+				color: #ffffff;
+				border-radius: 6px;
+				font-size: 14px;
+				font-weight: 600;
+				text-align: center;
+			}
+
+			/* Submit Button */
+			.submit-btn {
+				width: 100%;
+				padding: 16px;
+				background-color: #000000;
+				color: #ffffff;
+				border: none;
+				border-radius: 50px;
+				font-size: 16px;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				margin-top: 16px;
+			}
+
+			.submit-btn:hover {
+				background-color: #333333;
+				transform: translateY(-2px);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+			}
+
+			.submit-btn:active {
+				transform: translateY(0);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+			}
+
+			/* Results Section */
+			.results-section {
+				display: none;
+				animation: fadeIn 0.5s ease;
+			}
+
+			.results-section.show {
+				display: block;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.results-container {
+				background-color: #f5f5f5;
+				padding: 40px;
+				border-radius: 10px;
+				text-align: center;
+				margin-bottom: 32px;
+			}
+
+			.results-icon {
+				font-size: 48px;
+				margin-bottom: 16px;
+			}
+
+			.results-label {
+				font-size: 14px;
+				color: #666666;
+				margin-bottom: 8px;
+				font-weight: 500;
+			}
+
+			.monthly-loss {
+				font-size: 48px;
+				font-weight: 700;
+				color: #dc143c;
+				margin-bottom: 12px;
+				letter-spacing: -1px;
+			}
+
+			.yearly-label {
+				font-size: 14px;
+				color: #666666;
+				font-weight: 500;
+			}
+
+			/* Good News Box */
+			.good-news-box {
+				background-color: #f8f8f8;
+				border: 1px solid #e8e8e8;
+				padding: 32px;
+				border-radius: 10px;
+				margin-bottom: 32px;
+				animation: fadeIn 0.5s ease 0.1s both;
+			}
+
+			.good-news-title {
+				font-size: 16px;
+				font-weight: 600;
+				color: #27ae60;
+				margin-bottom: 12px;
+			}
+
+			.good-news-text {
+				font-size: 14px;
+				color: #333333;
+				line-height: 1.6;
+				margin-bottom: 20px;
+			}
+
+			.recovery-display {
+				font-size: 20px;
+				font-weight: 700;
+				color: #27ae60;
+				margin-bottom: 0;
+			}
+
+			/* CTA Button */
+			.cta-btn {
+				width: 100%;
+				padding: 16px;
+				background-color: #000000;
+				color: #ffffff;
+				border: none;
+				border-radius: 50px;
+				font-size: 16px;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+				margin-top: 16px;
+			}
+
+			.cta-btn:hover {
+				background-color: #333333;
+				transform: translateY(-2px);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+			}
+
+			.cta-btn:active {
+				transform: translateY(0);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+			}
+
+			/* Error Message */
+			.error-message {
+				color: #dc143c;
+				font-size: 12px;
+				margin-top: 6px;
+				display: none;
+			}
+
+			.error-message.show {
+				display: block;
+			}
+
+			/* Responsive */
+			@media (max-width: 640px) {
+				main {
+					padding: 24px 16px;
+				}
+
+				h1 {
+					font-size: 24px;
+				}
+
+				.form-section {
+					padding: 24px;
+				}
+
+				.results-container {
+					padding: 24px;
+				}
+
+				.good-news-box {
+					padding: 20px;
+				}
+
+				.monthly-loss {
+					font-size: 36px;
+				}
+
+				.recovery-display {
+					font-size: 16px;
+				}
+
+				.slider-container {
+					gap: 12px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<div class="header-container">
+				<div class="logo"></div>
+				<div class="logo-text">Botcipher</div>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<main>
+			<!-- Header Section -->
+			<section class="header-section">
+				<h1>How Much Revenue Are You Losing to Missed Calls?</h1>
+				<p class="subtitle">Answer 5 quick questions to find out</p>
+			</section>
+
+			<!-- Form Section -->
+			<section class="form-section">
+				<form id="calculatorForm">
+					<!-- Business Type -->
+					<div class="form-group">
+						<label for="businessType"
+							>What type of service business do you run?</label
+						>
+						<select id="businessType" required>
+							<option value="">Select your business type</option>
+							<option value="hvac">HVAC</option>
+							<option value="plumbing">Plumbing</option>
+							<option value="legal">Legal Services</option>
+							<option value="medical">Medical/Dental</option>
+							<option value="roofing">Roofing</option>
+							<option value="electrical">Electrical</option>
+							<option value="realestate">Real Estate</option>
+							<option value="other">Other Service Business</option>
+						</select>
+						<div class="error-message" data-field="businessType">
+							Please select your business type
+						</div>
+					</div>
+
+					<!-- Total Calls Slider -->
+					<div class="form-group">
+						<label for="totalCalls"
+							>How many calls do you receive per day?</label
+						>
+						<div class="slider-container">
+							<input
+								type="range"
+								id="totalCalls"
+								min="5"
+								max="100"
+								value="20"
+								step="5"
+								class="slider-input"
+							/>
+							<span class="slider-value" id="totalCallsValue">20</span>
+						</div>
+					</div>
+
+					<!-- Missed Calls Slider -->
+					<div class="form-group">
+						<label for="missedCalls"
+							>How many of those go to voicemail per day?</label
+						>
+						<div class="slider-container">
+							<input
+								type="range"
+								id="missedCalls"
+								min="0"
+								max="50"
+								value="8"
+								step="1"
+								class="slider-input"
+							/>
+							<span class="slider-value" id="missedCallsValue">8</span>
+						</div>
+					</div>
+
+					<!-- Average Deal Value -->
+					<div class="form-group">
+						<label for="dealValue"
+							>What's your average project/service value?</label
+						>
+						<input
+							type="number"
+							id="dealValue"
+							value="5000"
+							placeholder="e.g., 5000"
+							required
+						/>
+						<div class="error-message" data-field="dealValue">
+							Please enter a valid amount
+						</div>
+					</div>
+
+					<!-- Close Rate -->
+					<div class="form-group">
+						<label for="closeRate"
+							>What's your close rate on qualified leads?</label
+						>
+						<select id="closeRate" required>
+							<option value="">Select your close rate</option>
+							<option value="0.10">10%</option>
+							<option value="0.20">20%</option>
+							<option value="0.30" selected>30%</option>
+							<option value="0.40">40%</option>
+							<option value="0.50">50%+</option>
+						</select>
+						<div class="error-message" data-field="closeRate">
+							Please select your close rate
+						</div>
+					</div>
+
+					<!-- Submit Button -->
+					<button type="submit" class="submit-btn">
+						Calculate My Missed Revenue 📊
+					</button>
+				</form>
+			</section>
+
+			<!-- Results Section -->
+			<section class="results-section" id="resultsSection">
+				<div class="results-container">
+					<div class="results-icon">❌</div>
+					<div class="results-label">You're Losing Approximately</div>
+					<div class="monthly-loss" id="monthlyLoss">$0</div>
+					<div class="yearly-label" id="yearlyLabel">
+						That's $0 per year in missed revenue
+					</div>
+				</div>
+
+				<!-- Good News Box -->
+				<div class="good-news-box">
+					<div class="good-news-title">📞 Good News:</div>
+					<div class="good-news-text">
+						We can help you capture 80%+ of these calls with AI voice agents
+						that answer 24/7, qualify leads, and book meetings automatically.
+					</div>
+					<div class="recovery-display" id="recoveryDisplay">
+						That's an extra $0 per month you could be capturing
+					</div>
+				</div>
+
+				<!-- CTA Button -->
+				<a href="https://cal.com/botcipher/15min" class="cta-btn"
+					>Book Your Free Voice Audit →</a
+				>
+			</section>
+		</main>
+
+		<script>
+			// Form Elements
+			const calculatorForm = document.getElementById("calculatorForm");
+			const businessTypeSelect = document.getElementById("businessType");
+			const totalCallsSlider = document.getElementById("totalCalls");
+			const totalCallsValue = document.getElementById("totalCallsValue");
+			const missedCallsSlider = document.getElementById("missedCalls");
+			const missedCallsValue = document.getElementById("missedCallsValue");
+			const dealValueInput = document.getElementById("dealValue");
+			const closeRateSelect = document.getElementById("closeRate");
+			const resultsSection = document.getElementById("resultsSection");
+
+			// Results Elements
+			const monthlyLossDisplay = document.getElementById("monthlyLoss");
+			const yearlyLabelDisplay = document.getElementById("yearlyLabel");
+			const recoveryDisplay = document.getElementById("recoveryDisplay");
+
+			// Update slider value displays in real-time
+			totalCallsSlider.addEventListener("input", () => {
+				totalCallsValue.textContent = totalCallsSlider.value;
+			});
+
+			missedCallsSlider.addEventListener("input", () => {
+				missedCallsValue.textContent = missedCallsSlider.value;
+			});
+
+			// Format currency
+			function formatCurrency(value) {
+				return new Intl.NumberFormat("en-US", {
+					style: "currency",
+					currency: "USD",
+					minimumFractionDigits: 0,
+					maximumFractionDigits: 0,
+				}).format(value);
+			}
+
+			// Validate form
+			function validateForm() {
+				let isValid = true;
+				const errorMessages = document.querySelectorAll(".error-message");
+
+				errorMessages.forEach((error) => {
+					error.classList.remove("show");
+				});
+
+				if (!businessTypeSelect.value) {
+					document
+						.querySelector('[data-field="businessType"]')
+						.classList.add("show");
+					isValid = false;
+				}
+
+				if (!dealValueInput.value || dealValueInput.value <= 0) {
+					document
+						.querySelector('[data-field="dealValue"]')
+						.classList.add("show");
+					isValid = false;
+				}
+
+				if (!closeRateSelect.value) {
+					document
+						.querySelector('[data-field="closeRate"]')
+						.classList.add("show");
+					isValid = false;
+				}
+
+				return isValid;
+			}
+
+			// Calculate revenue
+			function calculateRevenue() {
+				if (!validateForm()) return;
+
+				const missedCalls = parseInt(missedCallsSlider.value);
+				const closeRate = parseFloat(closeRateSelect.value);
+				const dealValue = parseFloat(dealValueInput.value);
+
+				// Calculate monthly loss
+				const monthlyLoss = missedCalls * closeRate * dealValue * 30;
+				const yearlyLoss = monthlyLoss * 12;
+
+				// Calculate 80% recovery
+				const monthlyRecovery = monthlyLoss * 0.8;
+
+				// Update display
+				monthlyLossDisplay.textContent = formatCurrency(monthlyLoss);
+				yearlyLabelDisplay.textContent = `That's ${formatCurrency(
+					yearlyLoss
+				)} per year in missed revenue`;
+				recoveryDisplay.textContent = `That's an extra ${formatCurrency(
+					monthlyRecovery
+				)} per month you could be capturing`;
+
+				// Show results with animation
+				resultsSection.classList.add("show");
+
+				// Smooth scroll to results
+				setTimeout(() => {
+					resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+				}, 100);
+			}
+
+			// Form submission
+			calculatorForm.addEventListener("submit", (e) => {
+				e.preventDefault();
+				calculateRevenue();
+			});
+
+			// Allow Enter key on inputs to submit
+			dealValueInput.addEventListener("keypress", (e) => {
+				if (e.key === "Enter") {
+					e.preventDefault();
+					calculateRevenue();
+				}
+			});
+
+			// Initialize with default values
+			totalCallsValue.textContent = totalCallsSlider.value;
+			missedCallsValue.textContent = missedCallsSlider.value;
+		</script>
+	</body>
+</html>
