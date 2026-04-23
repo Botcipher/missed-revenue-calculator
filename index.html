@@ -98,6 +98,7 @@
 				border-radius: 10px;
 				transition: border-color 0.3s ease, box-shadow 0.3s ease;
 				font-family: inherit;
+				background-color: #ffffff;
 			}
 
 			select:focus,
@@ -519,16 +520,19 @@
 					>
 					<select id="businessType" required>
 						<option value="">-- Select Business Type --</option>
+						<option value="Concrete Contractor">Concrete Contractor</option>
+						<option value="Electrical">Electrical</option>
 						<option value="HVAC">HVAC</option>
-						<option value="Plumbing">Plumbing</option>
+						<option value="Junk Removal">Junk Removal</option>
 						<option value="Legal Services">Legal Services</option>
 						<option value="Medical/Dental">Medical/Dental</option>
-						<option value="Roofing">Roofing</option>
-						<option value="Electrical">Electrical</option>
+						<option value="Movers">Movers</option>
+						<option value="Painters">Painters</option>
+						<option value="Plumbing">Plumbing</option>
 						<option value="Real Estate">Real Estate</option>
-						<option value="Other Service Business">
-							Other Service Business
-						</option>
+						<option value="Roofing">Roofing</option>
+						<option value="Roofers">Roofers</option>
+						<option value="Other Service Business">Other Service Business</option>
 					</select>
 				</div>
 
@@ -803,7 +807,7 @@
 					userData.avgDealValue
 				);
 				document.getElementById("resultCloseRate").textContent =
-					userData.closeRate * 100 + "%";
+					Math.round(parseFloat(userData.closeRate) * 100) + "%";
 
 				// Update CTA link
 				const ctaButton = document.querySelector(".cta-button");
@@ -894,7 +898,3 @@
 		</script>
 	</body>
 </html>
-
-
-
-
