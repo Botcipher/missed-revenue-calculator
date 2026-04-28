@@ -25,7 +25,6 @@
 				padding: 40px 20px;
 			}
 
-			/* Logo & Header */
 			.header {
 				text-align: center;
 				margin-bottom: 50px;
@@ -63,7 +62,6 @@
 				margin-bottom: 30px;
 			}
 
-			/* Form Section */
 			#calculatorForm {
 				background: #f5f5f5;
 				padding: 30px;
@@ -109,7 +107,6 @@
 				box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 			}
 
-			/* Slider Group */
 			.slider-group {
 				display: flex;
 				justify-content: space-between;
@@ -171,7 +168,6 @@
 				white-space: nowrap;
 			}
 
-			/* Buttons */
 			button {
 				width: 100%;
 				padding: 18px;
@@ -196,7 +192,6 @@
 				transform: translateY(0);
 			}
 
-			/* Email Gate Section */
 			#emailGate {
 				background: #fff;
 				border: 1px solid #f0f0f0;
@@ -218,13 +213,14 @@
 				font-size: 24px;
 				font-weight: 700;
 				color: #000;
-				margin-bottom: 15px;
+				margin-bottom: 12px;
 			}
 
 			.email-gate-subheadline {
-				font-size: 16px;
+				font-size: 15px;
 				color: #666;
 				margin-bottom: 30px;
+				line-height: 1.6;
 			}
 
 			.email-input-wrapper {
@@ -253,11 +249,10 @@
 
 			.privacy-text {
 				font-size: 12px;
-				color: #999;
+				color: #bbb;
 				margin-top: 20px;
 			}
 
-			/* Loading State */
 			#loadingState {
 				text-align: center;
 				padding: 60px 30px;
@@ -276,12 +271,8 @@
 			}
 
 			@keyframes spin {
-				0% {
-					transform: rotate(0deg);
-				}
-				100% {
-					transform: rotate(360deg);
-				}
+				0% { transform: rotate(0deg); }
+				100% { transform: rotate(360deg); }
 			}
 
 			.loading-text {
@@ -289,7 +280,6 @@
 				color: #666;
 			}
 
-			/* Results Section */
 			#results {
 				display: none;
 				transition: opacity 0.5s ease;
@@ -308,7 +298,7 @@
 
 			.results-header {
 				text-align: center;
-				margin-bottom: 40px;
+				margin-bottom: 24px;
 			}
 
 			.results-icon {
@@ -337,7 +327,26 @@
 				color: #666;
 			}
 
-			/* Breakdown Section */
+			/* Pain → Pause → Hope structure */
+			.pause-line {
+				background: #fafafa;
+				border-left: 3px solid #000;
+				padding: 16px 20px;
+				border-radius: 0 8px 8px 0;
+				margin: 20px 0;
+				font-size: 15px;
+				color: #333;
+				line-height: 1.6;
+			}
+
+			.hope-line {
+				text-align: center;
+				font-size: 16px;
+				color: #27ae60;
+				font-weight: 600;
+				margin: 20px 0 30px;
+			}
+
 			.breakdown-section {
 				margin-bottom: 40px;
 			}
@@ -372,7 +381,6 @@
 				color: #000;
 			}
 
-			/* Good News Box */
 			.good-news-box {
 				background: #f0fff4;
 				border-left: 4px solid #27ae60;
@@ -385,12 +393,12 @@
 				font-size: 20px;
 				font-weight: 700;
 				color: #27ae60;
-				margin-bottom: 15px;
+				margin-bottom: 12px;
 			}
 
 			.good-news-description {
 				font-size: 16px;
-				color: #666;
+				color: #444;
 				margin-bottom: 20px;
 				line-height: 1.6;
 			}
@@ -402,7 +410,6 @@
 				margin-bottom: 20px;
 			}
 
-			/* Features List */
 			.features-list {
 				list-style: none;
 				margin-bottom: 20px;
@@ -424,7 +431,6 @@
 				font-weight: 700;
 			}
 
-			/* CTA Button Link */
 			.cta-button {
 				display: inline-block;
 				width: 100%;
@@ -432,7 +438,6 @@
 				text-align: center;
 			}
 
-			/* Utilities */
 			.hidden {
 				display: none !important;
 				visibility: hidden !important;
@@ -448,24 +453,15 @@
 			}
 
 			@keyframes fadeIn {
-				from {
-					opacity: 0;
-				}
-				to {
-					opacity: 1;
-				}
+				from { opacity: 0; }
+				to { opacity: 1; }
 			}
 
 			@keyframes fadeOut {
-				from {
-					opacity: 1;
-				}
-				to {
-					opacity: 0;
-				}
+				from { opacity: 1; }
+				to { opacity: 0; }
 			}
 
-			/* Mobile Responsive */
 			@media (max-width: 640px) {
 				.container {
 					padding: 30px 15px;
@@ -489,7 +485,7 @@
 				}
 
 				.results-header {
-					margin-bottom: 30px;
+					margin-bottom: 20px;
 				}
 
 				button {
@@ -502,7 +498,6 @@
 	</head>
 	<body>
 		<div class="container">
-			<!-- Logo & Header -->
 			<div class="header">
 				<div class="logo">
 					<span class="logo-icon">⚡</span>
@@ -512,12 +507,9 @@
 				<p class="subtitle">Answer 5 quick questions to find out</p>
 			</div>
 
-			<!-- Calculator Form -->
 			<form id="calculatorForm">
 				<div class="form-group">
-					<label for="businessType"
-						>What type of service business do you run?</label
-					>
+					<label for="businessType">What type of service business do you run?</label>
 					<select id="businessType" required>
 						<option value="">-- Select Business Type --</option>
 						<option value="Concrete Contractor">Concrete Contractor</option>
@@ -531,7 +523,6 @@
 						<option value="Plumbing">Plumbing</option>
 						<option value="Real Estate">Real Estate</option>
 						<option value="Roofing">Roofing</option>
-
 						<option value="Other Service Business">Other Service Business</option>
 					</select>
 				</div>
@@ -539,14 +530,7 @@
 				<div class="form-group">
 					<label>How many calls do you receive per day?</label>
 					<div class="slider-group">
-						<input
-							type="range"
-							id="totalCalls"
-							min="1"
-							max="100"
-							value="20"
-							step="1"
-						/>
+						<input type="range" id="totalCalls" min="1" max="100" value="20" step="1" />
 						<span class="slider-value" id="totalCallsValue">20</span>
 					</div>
 				</div>
@@ -554,35 +538,18 @@
 				<div class="form-group">
 					<label>How many of those go to voicemail per day?</label>
 					<div class="slider-group">
-						<input
-							type="range"
-							id="missedCalls"
-							min="0"
-							max="50"
-							value="8"
-							step="1"
-						/>
+						<input type="range" id="missedCalls" min="0" max="50" value="8" step="1" />
 						<span class="slider-value" id="missedCallsValue">8</span>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="avgDeal"
-						>What's your average project/service value?</label
-					>
-					<input
-						type="number"
-						id="avgDeal"
-						placeholder="e.g., 5000"
-						value="5000"
-						required
-					/>
+					<label for="avgDeal">What's your average project/service value?</label>
+					<input type="number" id="avgDeal" placeholder="e.g., 5000" value="5000" required />
 				</div>
 
 				<div class="form-group">
-					<label for="closeRate"
-						>What's your close rate on qualified leads?</label
-					>
+					<label for="closeRate">What's your close rate on qualified leads?</label>
 					<select id="closeRate" required>
 						<option value="">-- Select Close Rate --</option>
 						<option value="0.10">10%</option>
@@ -599,33 +566,26 @@
 			<!-- Email Gate -->
 			<div id="emailGate">
 				<span class="email-gate-icon">🔒</span>
-				<h2 class="email-gate-headline">Unlock Your Personalized Report</h2>
+				<h2 class="email-gate-headline">Your results are ready</h2>
 				<p class="email-gate-subheadline">
-					Enter your email to see your exact missed revenue calculation
+					Drop your email below and we'll show you the number — plus send you a full breakdown you can keep.
 				</p>
 
 				<form id="emailForm">
 					<div class="email-input-wrapper">
 						<label for="userEmail">Email Address</label>
-						<input
-							type="email"
-							id="userEmail"
-							placeholder="you@yourbusiness.com"
-							required
-						/>
+						<input type="email" id="userEmail" placeholder="you@yourbusiness.com" required />
 					</div>
 
 					<button type="submit">Show My Results →</button>
 
 					<div class="trust-elements">
-						<div class="trust-item">✓ Instant results on screen</div>
-						<div class="trust-item">✓ Full report emailed to you</div>
-						<div class="trust-item">✓ Free action plan included</div>
+						<div class="trust-item">✓ Your number is on screen instantly</div>
+						<div class="trust-item">✓ Full breakdown sent to your inbox</div>
+						<div class="trust-item">✓ No spam, no pitch calls out of nowhere</div>
 					</div>
 
-					<p class="privacy-text">
-						We respect your privacy. Unsubscribe anytime.
-					</p>
+					<p class="privacy-text">We keep your info private. Unsubscribe anytime.</p>
 				</form>
 			</div>
 
@@ -641,15 +601,23 @@
 					✓ Full report sent to <span id="resultEmail"></span>
 				</div>
 
+				<!-- PAIN -->
 				<div class="results-header">
 					<span class="results-icon">❌</span>
-					<p class="results-label">You're Losing Approximately</p>
+					<p class="results-label">You're losing approximately</p>
 					<div class="big-number" id="monthlyLossDisplay">$360,000</div>
 					<p class="results-subtitle">
-						That's <span id="yearlyLossDisplay">$4,320,000</span> per year in
-						missed revenue
+						That's <span id="yearlyLossDisplay">$4,320,000</span> per year in missed revenue
 					</p>
 				</div>
+
+				<!-- PAUSE -->
+				<div class="pause-line" id="pauseLine">
+					That's not an estimate pulled from thin air — that's what walked out of your HVAC business last month and called the next guy on Google.
+				</div>
+
+				<!-- HOPE -->
+				<p class="hope-line">The good news — most of it is recoverable. Missed calls aren't a staffing problem, they're a coverage problem.</p>
 
 				<div class="breakdown-section">
 					<h3 class="section-heading">📊 Your Numbers</h3>
@@ -671,29 +639,24 @@
 					</div>
 				</div>
 
+				<!-- SOLUTION -->
 				<div class="good-news-box">
-					<h3 class="good-news-title">📞 Good News:</h3>
-					<p class="good-news-description">
-						We can help you capture 80%+ of these calls with AI voice agents
-						that answer 24/7, qualify leads, and book meetings automatically.
+					<h3 class="good-news-title">Here's what we do:</h3>
+					<p class="good-news-description" id="pitchDescription">
+						We help HVAC businesses answer every call, qualify the lead, and book the job automatically — even at 9 PM on a Sunday when your team is off the clock.
 					</p>
 					<p class="good-news-amount">
-						That's an extra
-						<span id="recoverableMonthlyDisplay">$288,000</span> per month
+						That's an extra <span id="recoverableMonthlyDisplay">$288,000</span> per month back in your pipeline
 					</p>
 
 					<ul class="features-list">
-						<li>Answer every call 24/7</li>
-						<li>Qualify leads automatically</li>
-						<li>Book meetings into your calendar</li>
-						<li>Sound 100% human</li>
+						<li>Every call answered, 24 hours a day</li>
+						<li>Leads qualified before they reach you</li>
+						<li>Appointments booked straight into your calendar</li>
+						<li>Professional, friendly, always available</li>
 					</ul>
 
-					<a
-						href="https://cal.com/your-link"
-						class="cta-button"
-						target="_blank"
-					>
+					<a href="https://cal.com/botcipher/15min" class="cta-button" target="_blank">
 						<button type="button">Book Your Free Voice Audit →</button>
 					</a>
 				</div>
@@ -701,36 +664,78 @@
 		</div>
 
 		<script>
-			// CONFIGURATION - Replace these with your actual URLs
-			const WEBHOOK_URL =
-				"https://fbhdsa.app.n8n.cloud/webhook/022b54c4-3fcf-4481-9b0b-b0ed981ba785";
+			const WEBHOOK_URL = "https://fbhdsa.app.n8n.cloud/webhook/022b54c4-3fcf-4481-9b0b-b0ed981ba785";
 			const BOOKING_LINK = "https://cal.com/botcipher/15min";
 
-			// Update slider values in real-time
-			document
-				.getElementById("totalCalls")
-				.addEventListener("input", function () {
-					document.getElementById("totalCallsValue").textContent = this.value;
-				});
+			// Dynamic copy per business type
+			const businessCopy = {
+				"HVAC": {
+					pause: "That's not an estimate pulled from thin air — that's what walked out of your HVAC business last month and called the next guy on Google.",
+					pitch: "We help HVAC businesses answer every call, qualify the lead, and book the job automatically — even at 9 PM on a Sunday when your team is off the clock."
+				},
+				"Roofing": {
+					pause: "That's not an estimate pulled from thin air — that's homeowners who needed a roofer, called your number, got voicemail, and hired someone else.",
+					pitch: "We help roofing companies answer every call, qualify the lead, and book the estimate automatically — even when your crew is on a job and can't pick up."
+				},
+				"Plumbing": {
+					pause: "That's not an estimate pulled from thin air — that's people with an emergency who called you, got voicemail, and found a plumber who picked up.",
+					pitch: "We help plumbing businesses answer every call, qualify the lead, and book the job automatically — so you never lose an emergency call to a competitor again."
+				},
+				"Electrical": {
+					pause: "That's not an estimate pulled from thin air — that's jobs that went to an electrician who simply picked up the phone when you didn't.",
+					pitch: "We help electrical businesses answer every call, qualify the lead, and book the job automatically — so every caller gets a response, not a voicemail."
+				},
+				"Legal Services": {
+					pause: "That's not an estimate pulled from thin air — that's potential clients who needed legal help, couldn't reach you, and hired another firm.",
+					pitch: "We help law firms answer every inquiry, qualify the lead, and book the consultation automatically — so no potential client slips through the cracks."
+				},
+				"Medical/Dental": {
+					pause: "That's not an estimate pulled from thin air — that's patients who called your practice, couldn't get through, and booked with someone else.",
+					pitch: "We help medical and dental practices answer every call, qualify the patient, and book the appointment automatically — around the clock."
+				},
+				"Moving Company": {
+					pause: "That's not an estimate pulled from thin air — that's people who needed a moving company, called you, got voicemail, and booked your competitor.",
+					pitch: "We help moving companies answer every call, qualify the job, and lock in the booking automatically — before they call the next company on the list."
+				},
+				"Painters": {
+					pause: "That's not an estimate pulled from thin air — that's homeowners who needed a painter, called your number, and hired whoever picked up.",
+					pitch: "We help painting businesses answer every call, qualify the lead, and book the estimate automatically — so you stop losing jobs to whoever answers faster."
+				},
+				"Concrete Contractor": {
+					pause: "That's not an estimate pulled from thin air — that's projects that went to another contractor because you were on site and couldn't pick up.",
+					pitch: "We help concrete contractors answer every call, qualify the project, and book the walkthrough automatically — even when you're boots on the ground."
+				},
+				"Junk Removal": {
+					pause: "That's not an estimate pulled from thin air — that's customers who needed a pickup today, called you, got nothing, and booked someone else.",
+					pitch: "We help junk removal businesses answer every call, quote the job, and confirm the booking automatically — before your competitor even calls back."
+				},
+				"Real Estate": {
+					pause: "That's not an estimate pulled from thin air — that's buyers and sellers who reached out, couldn't get you, and went with another agent.",
+					pitch: "We help real estate professionals answer every inquiry, qualify the lead, and book the showing automatically — so you never miss a hot lead again."
+				},
+				"Other Service Business": {
+					pause: "That's not an estimate pulled from thin air — that's customers who called, got nothing, and went straight to whoever picked up.",
+					pitch: "We help service businesses answer every call, qualify the lead, and book the job automatically — so you capture revenue that's currently walking out the door."
+				}
+			};
 
-			document
-				.getElementById("missedCalls")
-				.addEventListener("input", function () {
-					document.getElementById("missedCallsValue").textContent = this.value;
-				});
+			document.getElementById("totalCalls").addEventListener("input", function () {
+				document.getElementById("totalCallsValue").textContent = this.value;
+			});
 
-			// Format currency helper function
+			document.getElementById("missedCalls").addEventListener("input", function () {
+				document.getElementById("missedCallsValue").textContent = this.value;
+			});
+
 			function formatCurrency(number) {
 				return "$" + Math.round(number).toLocaleString("en-US");
 			}
 
-			// Validate email format
 			function isValidEmail(email) {
 				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 				return emailRegex.test(email);
 			}
 
-			// Transition between sections
 			function transitionTo(hideElement, showElement) {
 				hideElement.classList.add("fade-out");
 				setTimeout(() => {
@@ -740,24 +745,13 @@
 				}, 300);
 			}
 
-			// Calculate results
 			function calculateResults() {
-				const missedCallsPerDay = parseInt(
-					document.getElementById("missedCalls").value
-				);
+				const missedCallsPerDay = parseInt(document.getElementById("missedCalls").value);
 				const avgDeal = parseInt(document.getElementById("avgDeal").value);
-				const closeRate = parseFloat(
-					document.getElementById("closeRate").value
-				);
+				const closeRate = parseFloat(document.getElementById("closeRate").value);
 
-				// Monthly calculation (30 days)
-				const monthlyMissedRevenue =
-					missedCallsPerDay * closeRate * avgDeal * 30;
-
-				// Yearly calculation
+				const monthlyMissedRevenue = missedCallsPerDay * closeRate * avgDeal * 30;
 				const yearlyMissedRevenue = monthlyMissedRevenue * 12;
-
-				// Recoverable (80%)
 				const recoverableMonthly = monthlyMissedRevenue * 0.8;
 
 				return {
@@ -770,10 +764,8 @@
 				};
 			}
 
-			// Collect user data
 			function collectUserData(email) {
 				const calculations = calculateResults();
-
 				return {
 					businessType: document.getElementById("businessType").value,
 					totalCallsPerDay: document.getElementById("totalCalls").value,
@@ -789,112 +781,81 @@
 				};
 			}
 
-			// Display results
 			function displayResults(userData, calculations) {
+				const businessType = userData.businessType;
+				const copy = businessCopy[businessType] || businessCopy["Other Service Business"];
+
+				// Dynamic copy
+				document.getElementById("pauseLine").textContent = copy.pause;
+				document.getElementById("pitchDescription").textContent = copy.pitch;
+
+				// Numbers
 				document.getElementById("resultEmail").textContent = userData.email;
-				document.getElementById("monthlyLossDisplay").textContent =
-					calculations.monthlyLossFormatted;
-				document.getElementById("yearlyLossDisplay").textContent =
-					calculations.yearlyLossFormatted;
-				document.getElementById("recoverableMonthlyDisplay").textContent =
-					calculations.recoverableMonthlyFormatted;
+				document.getElementById("monthlyLossDisplay").textContent = calculations.monthlyLossFormatted;
+				document.getElementById("yearlyLossDisplay").textContent = calculations.yearlyLossFormatted;
+				document.getElementById("recoverableMonthlyDisplay").textContent = calculations.recoverableMonthlyFormatted;
 
-				document.getElementById("resultBusinessType").textContent =
-					userData.businessType;
-				document.getElementById("resultMissedCalls").textContent =
-					userData.missedCallsPerDay;
-				document.getElementById("resultAvgDeal").textContent = formatCurrency(
-					userData.avgDealValue
-				);
-				document.getElementById("resultCloseRate").textContent =
-					Math.round(parseFloat(userData.closeRate) * 100) + "%";
+				// Breakdown
+				document.getElementById("resultBusinessType").textContent = userData.businessType;
+				document.getElementById("resultMissedCalls").textContent = userData.missedCallsPerDay;
+				document.getElementById("resultAvgDeal").textContent = formatCurrency(userData.avgDealValue);
+				document.getElementById("resultCloseRate").textContent = Math.round(parseFloat(userData.closeRate) * 100) + "%";
 
-				// Update CTA link
-				const ctaButton = document.querySelector(".cta-button");
-				ctaButton.href = BOOKING_LINK;
+				document.querySelector(".cta-button").href = BOOKING_LINK;
 
-				// Show results section
 				document.getElementById("results").style.display = "block";
 				document.getElementById("results").classList.add("fade-in");
 
-				// Scroll to results
 				setTimeout(() => {
-					document
-						.getElementById("results")
-						.scrollIntoView({ behavior: "smooth", block: "start" });
+					document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
 				}, 100);
 			}
 
-			// Handle calculator form submission
-			document
-				.getElementById("calculatorForm")
-				.addEventListener("submit", function (e) {
-					e.preventDefault();
+			document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+				e.preventDefault();
 
-					// Validate form
-					if (
-						!document.getElementById("businessType").value ||
-						!document.getElementById("avgDeal").value ||
-						!document.getElementById("closeRate").value
-					) {
-						alert("Please fill in all required fields.");
-						return;
-					}
+				if (
+					!document.getElementById("businessType").value ||
+					!document.getElementById("avgDeal").value ||
+					!document.getElementById("closeRate").value
+				) {
+					alert("Please fill in all required fields.");
+					return;
+				}
 
-					// Transition to email gate
-					transitionTo(
-						document.getElementById("calculatorForm"),
-						document.getElementById("emailGate")
-					);
-				});
+				transitionTo(document.getElementById("calculatorForm"), document.getElementById("emailGate"));
+			});
 
-			// Handle email form submission
-			document
-				.getElementById("emailForm")
-				.addEventListener("submit", function (e) {
-					e.preventDefault();
+			document.getElementById("emailForm").addEventListener("submit", function (e) {
+				e.preventDefault();
 
-					const email = document.getElementById("userEmail").value.trim();
+				const email = document.getElementById("userEmail").value.trim();
 
-					// Validate email
-					if (!isValidEmail(email)) {
-						alert("Please enter a valid email address.");
-						return;
-					}
+				if (!isValidEmail(email)) {
+					alert("Please enter a valid email address.");
+					return;
+				}
 
-					// Collect data
-					const userData = collectUserData(email);
-					const calculations = calculateResults();
+				const userData = collectUserData(email);
+				const calculations = calculateResults();
 
-					// Send to webhook (if configured)
-					if (WEBHOOK_URL !== "REPLACE_WITH_YOUR_WEBHOOK_URL") {
-						fetch(WEBHOOK_URL, {
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json",
-							},
-							body: JSON.stringify(userData),
-						}).catch((error) => {
-							console.error("Webhook error:", error);
-							// Continue anyway
-						});
-					}
+				if (WEBHOOK_URL !== "REPLACE_WITH_YOUR_WEBHOOK_URL") {
+					fetch(WEBHOOK_URL, {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify(userData),
+					}).catch((error) => {
+						console.error("Webhook error:", error);
+					});
+				}
 
-					// Transition to loading state
-					transitionTo(
-						document.getElementById("emailGate"),
-						document.getElementById("loadingState")
-					);
+				transitionTo(document.getElementById("emailGate"), document.getElementById("loadingState"));
 
-					// Simulate loading and then show results
-					setTimeout(() => {
-						transitionTo(
-							document.getElementById("loadingState"),
-							document.getElementById("results")
-						);
-						displayResults(userData, calculations);
-					}, 1500);
-				});
+				setTimeout(() => {
+					transitionTo(document.getElementById("loadingState"), document.getElementById("results"));
+					displayResults(userData, calculations);
+				}, 1500);
+			});
 		</script>
 	</body>
 </html>
